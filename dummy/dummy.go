@@ -3,7 +3,7 @@ package dummy
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang-migrate/migrate"
-	mysqlM "github.com/golang-migrate/migrate/database/mysql"
+	"github.com/golang-migrate/migrate/database/mysql"
 	_ "github.com/golang-migrate/migrate/source/file"
 	"github.com/jmoiron/sqlx"
 	"log"
@@ -31,7 +31,7 @@ func createConnection() *sqlx.DB {
 }
 
 func migrateDb() {
-	driver, err := mysqlM.WithInstance(db.DB, &mysqlM.Config{})
+	driver, err := mysql.WithInstance(db.DB, &mysql.Config{})
 
 	if err != nil {
 		log.Fatalln(err)
